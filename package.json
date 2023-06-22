@@ -1,0 +1,22 @@
+{
+  "name": "webpack-boilerplate",
+  "version": "1.0.0",
+  "description": "Simple boilerplate with webpack 5 for webdev",
+  "private": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ilya Dokuchaev <miamorokor@mail.ru>",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ilya-Dokuchaev/webpack-boilerplate/issues"
+  },
+  "bugs": {
+    "url": "https://github.com/Ilya-Dokuchaev/webpack-boilerplate/issues",
+    "email": "miamorokor@mail.ru"
+  },
+  "homepage": "https://github.com/Ilya-Dokuchaev/webpack-boilerplate#readme"
+}

@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "webpack",
+    "template",
+    "boilerplate"
+  ],
   "author": "Ilya Dokuchaev <miamorokor@mail.ru>",
   "license": "MIT",
   "main": "index.js",
@@ -18,5 +22,9 @@
     "url": "https://github.com/Ilya-Dokuchaev/webpack-boilerplate/issues",
     "email": "miamorokor@mail.ru"
   },
-  "homepage": "https://github.com/Ilya-Dokuchaev/webpack-boilerplate#readme"
+  "homepage": "https://github.com/Ilya-Dokuchaev/webpack-boilerplate#readme",
+  "devDependencies": {
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4"
+  }
 }

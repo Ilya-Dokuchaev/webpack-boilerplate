@@ -4,7 +4,7 @@
   "description": "Simple boilerplate with webpack 5 for webdev",
   "private": "true",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
   "keywords": [
     "webpack",
@@ -15,7 +15,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ilya-Dokuchaev/webpack-boilerplate/issues"
+    "url": "https://github.com/Ilya-Dokuchaev/webpack-boilerplate"
   },
   "bugs": {
     "url": "https://github.com/Ilya-Dokuchaev/webpack-boilerplate/issues",

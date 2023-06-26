@@ -4,8 +4,9 @@
   "description": "Simple boilerplate with webpack 5 for webdev",
   "private": "true",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack serve"
+    "build-dev": "webpack --config configuration/webpack.dev.config.js --mode=development",
+    "build-prod": "webpack --config configuration/webpack.prod.config.js --mode=production",
+    "start-dev": "webpack serve --config configuration/webpack.dev.config.js --mode=development"
   },
   "keywords": [
     "webpack",
@@ -31,6 +32,7 @@
     "html-webpack-plugin": "^5.5.3",
     "webpack": "^5.88.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.1",
+    "webpack-merge": "^5.9.0"
   }
 }

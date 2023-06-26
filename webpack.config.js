@@ -1,7 +1,6 @@
 const path = require('path')
 const fs = require('fs')
 
-const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const enviroment = require('./configuration/enviroment.js')
@@ -22,7 +21,6 @@ module.exports = {
     },
     output: {
         filename: "js/[name].js",
-        path: enviroment.paths.output,
         clean: true
     },
     module: {
@@ -42,15 +40,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: path.resolve(enviroment.paths.source, 'img', 'content'),
-                    to: path.resolve(enviroment.paths.output, 'img', 'content'),
-                    toType: 'dir'
-                }
-            ]
-        }),
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: "./src/template.html",

@@ -13,7 +13,6 @@
   ],
   "author": "Ilya Dokuchaev <miamorokor@mail.ru>",
   "license": "MIT",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Ilya-Dokuchaev/webpack-boilerplate/issues"
@@ -24,6 +23,9 @@
   },
   "homepage": "https://github.com/Ilya-Dokuchaev/webpack-boilerplate#readme",
   "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "babel-loader": "^9.1.2",
     "copy-webpack-plugin": "^11.0.0",
     "html-webpack-plugin": "^5.5.3",
     "webpack": "^5.88.0",

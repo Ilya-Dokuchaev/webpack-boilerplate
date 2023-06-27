@@ -1,4 +1,5 @@
 import Counter from "./counter";
+import '../scss/app.scss';
 
 const counter = new Counter(10);
 

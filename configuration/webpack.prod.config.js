@@ -1,24 +1,26 @@
-const path = require("path");
-const enviroment = require("./enviroment");
+const webpackConfiguration = require('../webpack.config');
+const TerserPlugin = require('terser-webpack-plugin')
+const CssMinimizer = require("css-minimizer-webpack-plugin")
 
 const {merge} = require('webpack-merge')
-const webpackConfiguration = require('../webpack.config');
-const CopyPlugin = require("copy-webpack-plugin");
-
 module.exports = merge(webpackConfiguration, {
     mode: 'production',
+    devtool: false,
     output: {
-        path: enviroment.paths.outputProd,
+        filename: "js/mini.[name].[contenthash].bundle.js",
+
     },
-    plugins: [
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: path.resolve(enviroment.paths.source, 'img', 'content'),
-                    to: path.resolve(enviroment.paths.outputProd, 'img', 'content'),
-                    toType: 'dir'
-                }
-            ]
-        })
-    ]
+    optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin({
+            parallel: true
+        }),
+            new CssMinimizer({})],
+
+    },
+    performance: {
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000,
+    },
+    plugins: []
 })

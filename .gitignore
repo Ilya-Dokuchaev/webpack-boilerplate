@@ -1,4 +1,25 @@
-# IntelliJ project files
+
+# Mac OS X
+.DS_Store
+._.*
+._*
+
+# Ignore local editor
+.project
+.settings
 .idea
-*.iml
-node_modules
+*.swp
+tags
+nbproject/*
+
+# Windows
+Thumbs.db
+
+# Debugging related
+npm-debug.log
+
+# Dependency packages files
+node_modules/
+
+# Output
+dist/

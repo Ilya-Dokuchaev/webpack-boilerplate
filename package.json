@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Simple boilerplate with webpack 5 for webdev",
   "private": "true",
+  "browserslist": [
+    "> 5%",
+    "last 2 versions"
+  ],
   "scripts": {
     "build-dev": "webpack --config configuration/webpack.dev.config.js --mode=development",
     "build-prod": "webpack --config configuration/webpack.prod.config.js --mode=production",

@@ -1,33 +1,34 @@
-const path = require("path");
+
 const enviroment = require("./enviroment");
 
-const {merge} = require('webpack-merge')
 const webpackConfiguration = require('../webpack.config');
-const CopyPlugin = require("copy-webpack-plugin");
 
+const {merge} = require('webpack-merge')
 module.exports = merge(webpackConfiguration, {
     mode: 'development',
     output: {
-        path: enviroment.paths.output,
+        filename: "js/[name].bundle.js",
     },
     devtool: 'inline-source-map',
     devServer: {
         static: {
-            directory: path.resolve(enviroment.paths.output)
+            directory: enviroment.paths.output,
+            publicPath: '/',
+            watch: true,
         },
         ...enviroment.server,
-        hot: true,
-        open: true
+        hot: false,
+        client: {
+            overlay: true,
+        },
+        compress: true,
+        open: true,
+
     },
-    plugins: [
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: path.resolve(enviroment.paths.source, 'img', 'content'),
-                    to: path.resolve(enviroment.paths.output, 'img', 'content'),
-                    toType: 'dir'
-                }
-            ]
-        })
-    ]
+    watchOptions: {
+        aggregateTimeout: 300,
+        poll: 300,
+        ignored: /node_modules/,
+    },
+    plugins: []
 })

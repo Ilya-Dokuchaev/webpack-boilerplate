@@ -16,11 +16,11 @@
 // Media queries
 @mixin bp($point) {
   @if $point == large {
-    @media (min-width: 1280px) {
+    @media (width >= 1280px) {
       @content;
     }
   } @else if $point == small {
-    @media (max-width: 1279px) {
+    @media (width <= 1279px) {
       @content;
     }
   }
@@ -28,7 +28,7 @@
 
 // Text selection
 @mixin text-selection($color-selection, $color-selection-bg) {
-  ::-moz-selection { // sass-lint:disable-line no-vendor-prefixes
+  ::selection { // sass-lint:disable-line no-vendor-prefixes
     background: $color-selection-bg;
     color: $color-selection;
     text-shadow: none;
@@ -45,17 +45,17 @@
 //Usage:
 //@include placeholder;
 @mixin placeholder {
-  // sass-lint:disable no-vendor-prefixes
-  ::-webkit-input-placeholder {
+  /*stylelint-disable no-vendor-prefixes*/
+  ::input-placeholder {
     @content
   }
-  :-moz-placeholder {
+  :placeholder {
     @content
   }
-  ::-moz-placeholder {
+  ::placeholder {
     @content
   }
-  :-ms-input-placeholder {
+  :input-placeholder {
     @content
   }
 }

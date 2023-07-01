@@ -44,8 +44,8 @@
 //Placeholders
 //Usage:
 //@include placeholder;
+//noinspection ALL
 @mixin placeholder {
-  /*stylelint-disable no-vendor-prefixes*/
   ::input-placeholder {
     @content
   }

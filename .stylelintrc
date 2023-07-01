@@ -5,16 +5,6 @@ extends:
   - stylelint-config-sass-guidelines
 plugins:
   - stylelint-scss
-files:
-  # formatter: stylish
-  include: 'src/scss/*'
-  ignore:
-    - 'src/scss/vendor/**/*.scss'
-    - 'src/scss/base/_reset.scss'
-    - 'src/scss/base/_print.scss'
-    - 'src/scss/base/_fonts.scss'
-    - 'src/scss/base/_mixins.scss'
-    - 'src/scss/dirty/_hacks.scss'
 rules:
   # Line Spacing
   rule-empty-line-before:

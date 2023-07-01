@@ -18,6 +18,11 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.ejs$/i,
+                use: ['html-loader', 'template-ejs-loader'],
+            },
+            //js-files loader
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
@@ -34,7 +39,7 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
             },
             {
-                test: /\.(png|gif|jpe?g|svg|webp)$/i,
+                test: /\.(png|gif|jpe?g|svg|)$/i,
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
@@ -61,40 +66,30 @@ module.exports = {
     },
     optimization: {
         minimizer: [
-            '...',
+            "...",
             new ImageMinimizerPlugin({
-                minimizer: {
-                    implementation: ImageMinimizerPlugin.imageminMinify,
-                    options: {
-                        // Lossless optimization with custom option
-                        // Feel free to experiment with options for better result for you
-                        plugins: [
-                            ['gifsicle', {interlaced: true}],
-                            ['jpegtran', {progressive: true}],
-                            ['optipng', {optimizationLevel: 5}],
-                            // Svgo configuration here https://github.com/svg/svgo#configuration
-                            [
-                                'svgo',
-                                {
-                                    plugins: [
-                                        {
-                                            name: 'removeViewBox',
-                                            active: false,
-                                        },
-                                    ],
+                generator: [
+                    {
+                        // You can apply generator using `?as=webp`, you can use any name and provide more options
+                        preset: "webp",
+                        implementation: ImageMinimizerPlugin.squooshGenerate,
+                        options: {
+                            encodeOptions: {
+                                // Please specify only one codec here, multiple codecs will not work
+                                webp: {
+                                    quality: 90,
                                 },
-                            ],
-                        ],
+                            },
+                        },
                     },
-                },
+                ],
             }),
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
             filename: "index.html",
-            template: "./src/template.html",
-            title: "Webpack App",
+            template: "./src/template.ejs",
         }),
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
@@ -102,19 +97,12 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: path.resolve(enviroment.paths.source, 'img', 'favicon_package'),
-                    to: path.resolve(enviroment.paths.output, 'img', 'favicon_package'),
-                    toType: 'dir'
-                },
-
-                {
                     from: path.resolve(enviroment.paths.source, 'img', 'content'),
                     to: path.resolve(enviroment.paths.output, 'img', 'content'),
                     toType: 'dir'
                 },
-
-
             ]
         })
-    ]
+    ],
+    target: 'web'
 }

@@ -8,13 +8,15 @@
     "last 2 versions"
   ],
   "scripts": {
-    "build-dev": "webpack --config configuration/webpack.dev.config.js --mode=development",
-    "build-prod": "webpack --config configuration/webpack.prod.config.js --mode=production",
-    "start": "webpack serve --config configuration/webpack.dev.config.js --mode=development",
-    "predeploy": "npm run build-prod",
-    "deploy-gh": "gh-pages -b deployment -d dist",
-    "lint:scss": "stylelint \"src/**/*.scss\"",
-    "lint:scss:fix": "stylelint \"src/**/*.scss\" --fix"
+    "build": "webpack --config configuration/webpack.dev.config.js",
+    "prebuild-prod": "npm run lint:scss:fix & npm run lint:js:fix",
+    "build-prod": "webpack  --config configuration/webpack.prod.config.js ",
+    "start": "webpack serve --config configuration/webpack.dev.config.js",
+    "deploy": "gh-pages -b deployment -d dist",
+    "lint:scss": "stylelint \"**/*.scss\"",
+    "lint:scss:fix": "stylelint \"**/*.scss\" --fix ",
+    "lint:js": "eslint --ext .js src/js/",
+    "lint:js:fix": "eslint --ext .js src/js/ --fix"
   },
   "keywords": [
     "webpack",
@@ -39,6 +41,7 @@
     "ajv": "^8.12.0",
     "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",

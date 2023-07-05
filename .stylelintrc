@@ -7,8 +7,8 @@ plugins:
   - stylelint-scss
 rules:
   # Line Spacing
-  rule-empty-line-before:
-    - always-multi-line
+  at-rule-empty-line-before:
+    - always
     - ignore:
         - after-comment
         - first-nested
@@ -33,10 +33,7 @@ length-zero-no-unit: true
 scss/at-extend-no-missing-placeholder: null
 selector-no-qualifying-type:
   - true
-  - ignore:
-      - attribute
-      - class
-      - id
+  - ignore: [ "attribute","class", "id" ]
 property-no-unknown:
   - true
   - ignoreProperties:

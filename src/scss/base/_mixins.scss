@@ -33,29 +33,28 @@
     color: $color-selection;
     text-shadow: none;
   }
-
-  ::selection {
-    background: $color-selection-bg;
-    color: $color-selection;
-    text-shadow: none;
-  }
 }
 
 //Placeholders
 //Usage:
 //@include placeholder;
-//noinspection ALL
+/*stylelint-disable*/
 @mixin placeholder {
   ::input-placeholder {
     @content
   }
+
   :placeholder {
     @content
   }
+
   ::placeholder {
     @content
   }
+
   :input-placeholder {
     @content
   }
 }
+
+/*stylelint-enable*/

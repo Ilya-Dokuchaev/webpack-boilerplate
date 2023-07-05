@@ -1,3 +1,5 @@
-h1{
-  background: #ffff;
+@use 'base/vars';
+
+h1 {
+  color: vars.$base-color;
 }

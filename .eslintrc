@@ -6,10 +6,24 @@
     "jquery": true
   },
   "rules": {
+    "indent": 0,
+    "no-plusplus": 0,
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "linebreak-style": 0,
     "no-use-before-define": 0,
+    "quotes": 0,
     "func-names": 0,
     "prefer-arrow-callback": 0,
     "no-var": 0,
+    "eol-last": 0,
     "max-len": 0,
     "guard-for-in": 0,
     "object-shorthand": 0,

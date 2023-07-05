@@ -7,13 +7,14 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const enviroment = require('./configuration/enviroment.js')
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 module.exports = {
     entry: {
         app: path.resolve(enviroment.paths.source, 'js', 'app.js')
     },
     output: {
         path: enviroment.paths.output,
-        clean: true
+        clean: true,
     },
     module: {
         rules: [
@@ -39,34 +40,19 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
             },
             {
-                test: /\.(png|gif|jpe?g|svg|)$/i,
+                test: /\.(png|gif|jpe?g|svg|eot|ttf|woff|woff2)$/i,
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
                         maxSize: enviroment.limits.images,
                     },
-                },
-                generator: {
-                    filename: 'img/design/[name].[hash:6][ext]',
-                },
-            },
-            {
-                test: /\.(eot|ttf|woff|woff2)$/,
-                type: 'asset',
-                parser: {
-                    dataUrlCondition: {
-                        maxSize: enviroment.limits.images,
-                    },
-                },
-                generator: {
-                    filename: 'img/design/[name].[hash:6][ext]',
                 },
             },
         ]
     },
     optimization: {
+        minimize: true,
         minimizer: [
-            "...",
             new ImageMinimizerPlugin({
                 generator: [
                     {
@@ -86,23 +72,24 @@ module.exports = {
             }),
         ],
     },
+    performance: {
+        assetFilter: (assetFileName) => !assetFileName.match(/\.(jpe?g|png|gif|)$/i)
+    },
     plugins: [
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: "./src/template.ejs",
-        }),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].css',
         }),
         new CopyPlugin({
             patterns: [
                 {
                     from: path.resolve(enviroment.paths.source, 'img', 'content'),
                     to: path.resolve(enviroment.paths.output, 'img', 'content'),
-                    toType: 'dir'
+                    toType: 'dir',
                 },
             ]
-        })
+        }),
+        new CleanWebpackPlugin(),
     ],
     target: 'web'
 }

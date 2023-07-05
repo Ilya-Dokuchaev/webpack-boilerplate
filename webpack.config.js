@@ -72,6 +72,9 @@ module.exports = {
             }),
         ],
     },
+    performance: {
+        assetFilter: (assetFileName) => !assetFileName.match(/\.(jpe?g|png|gif|)$/i)
+    },
     plugins: [
         new HtmlWebpackPlugin({
             filename: "index.html",
@@ -82,7 +85,7 @@ module.exports = {
                 {
                     from: path.resolve(enviroment.paths.source, 'img', 'content'),
                     to: path.resolve(enviroment.paths.output, 'img', 'content'),
-                    toType: 'dir'
+                    toType: 'dir',
                 },
             ]
         }),

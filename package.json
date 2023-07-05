@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "webpack --config configuration/webpack.dev.config.js",
-    "prebuild-prod": "npm run lint:scss:fix & npm run lint:js:fix",
+    "prebuild-prod": "npm run lint:scss:fix && npm run lint:js:fix",
     "build-prod": "webpack  --config configuration/webpack.prod.config.js ",
     "start": "webpack serve --config configuration/webpack.dev.config.js",
     "deploy": "gh-pages -b deployment -d dist",

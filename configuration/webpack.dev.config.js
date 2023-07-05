@@ -10,7 +10,7 @@ module.exports = merge(webpackConfiguration, {
         filename: "js/[name].bundle.js",
         assetModuleFilename: "[name][ext]"
     },
-    devtool: 'eval-cheap-source-map',
+    devtool: 'eval',
     devServer: {
         static: {
             directory: enviroment.paths.output,
@@ -30,7 +30,7 @@ module.exports = merge(webpackConfiguration, {
     module: {
         rules: [
             {
-                test: /\.(png|gif|jpe?g|svg|eot|ttf|woff|woff2)$/i,
+                test: /\.(png|gif|jpe?g|svg|eot|ttf|woff2?)$/i,
                 type: 'asset',
                 generator: {
                     filename: 'img/design/[name][ext]',

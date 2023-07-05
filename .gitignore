@@ -23,3 +23,9 @@ node_modules/
 
 # Output
 dist/
+
+# Coverage
+coverage/
+
+# __moks__
+__moks__/

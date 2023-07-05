@@ -24,14 +24,14 @@ module.exports = {
             },
             //js-files loader
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
                     options: {
                         presets: [
-                            ['@babel/preset-env']
-                        ]
+                            ['@babel/preset-env', {targets: {node: 'current'}}],
+                        ],
                     }
                 }
             },
@@ -51,8 +51,11 @@ module.exports = {
         ]
     },
     optimization: {
-        minimize: true,
+        runtimeChunk: {
+            name: (entrypoint) => `runtimechunk~${entrypoint.name}`,
+        },
         minimizer: [
+            '...',
             new ImageMinimizerPlugin({
                 generator: [
                     {
@@ -72,9 +75,6 @@ module.exports = {
             }),
         ],
     },
-    performance: {
-        assetFilter: (assetFileName) => !assetFileName.match(/\.(jpe?g|png|gif|)$/i)
-    },
     plugins: [
         new HtmlWebpackPlugin({
             filename: "index.html",
@@ -91,5 +91,17 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
     ],
+    resolve: {
+        alias: {
+            config$: './configs/app-config.js',
+        },
+        extensions: ['.js', '.jsx'],
+        modules: [
+            'node_modules',
+            'bower_components',
+            'shared',
+            '/shared/vendor/modules',
+        ],
+    },
     target: 'web'
 }

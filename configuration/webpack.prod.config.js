@@ -22,15 +22,16 @@ module.exports = merge(webpackConfiguration, {
     module: {
         rules: [
             {
-                test: /\.(png|gif|jpe?g|svg|eot|ttf|woff|woff2)$/i,
+                test: /\.(png|gif|jpe?g|svg|eot|ttf|woff2?)$/i,
                 type: 'asset',
                 generator: {
                     filename: 'img/design/[name].[contenthash][ext]',
                 }
-            }
+            },
         ]
     },
     performance: {
+        assetFilter: (assetFileName) => !assetFileName.match(/\.(jpe?g|png|gif|)$/i),
         maxEntrypointSize: 512000,
         maxAssetSize: 512000,
     },

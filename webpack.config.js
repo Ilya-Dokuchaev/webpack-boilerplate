@@ -24,18 +24,6 @@ module.exports = {
             },
             //js-files loader
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: [
-                            ['@babel/preset-env']
-                        ]
-                    }
-                }
-            },
-            {
                 test: /\.((c|sa|sc)ss)$/i,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
             },
@@ -51,8 +39,11 @@ module.exports = {
         ]
     },
     optimization: {
-        minimize: true,
+        // runtimeChunk: {
+        //     name: (entrypoint) => `runtimechunk~${entrypoint.name}`,
+        // },
         minimizer: [
+            '...',
             new ImageMinimizerPlugin({
                 generator: [
                     {
@@ -71,9 +62,6 @@ module.exports = {
                 ],
             }),
         ],
-    },
-    performance: {
-        assetFilter: (assetFileName) => !assetFileName.match(/\.(jpe?g|png|gif|)$/i)
     },
     plugins: [
         new HtmlWebpackPlugin({

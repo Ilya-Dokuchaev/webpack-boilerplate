@@ -10,7 +10,7 @@ module.exports = merge(webpackConfiguration, {
         filename: "js/[name].bundle.js",
         assetModuleFilename: "[name][ext]"
     },
-    devtool: 'eval-cheap-source-map',
+    devtool: 'eval',
     devServer: {
         static: {
             directory: enviroment.paths.output,

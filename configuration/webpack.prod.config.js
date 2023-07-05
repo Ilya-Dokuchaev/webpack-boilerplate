@@ -27,10 +27,23 @@ module.exports = merge(webpackConfiguration, {
                 generator: {
                     filename: 'img/design/[name].[contenthash][ext]',
                 }
-            }
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                            ['@babel/preset-env']
+                        ]
+                    }
+                }
+            },
         ]
     },
     performance: {
+        assetFilter: (assetFileName) => !assetFileName.match(/\.(jpe?g|png|gif|)$/i),
         maxEntrypointSize: 512000,
         maxAssetSize: 512000,
     },

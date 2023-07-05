@@ -22,22 +22,10 @@ module.exports = merge(webpackConfiguration, {
     module: {
         rules: [
             {
-                test: /\.(png|gif|jpe?g|svg|eot|ttf|woff|woff2)$/i,
+                test: /\.(png|gif|jpe?g|svg|eot|ttf|woff2?)$/i,
                 type: 'asset',
                 generator: {
                     filename: 'img/design/[name].[contenthash][ext]',
-                }
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: [
-                            ['@babel/preset-env']
-                        ]
-                    }
                 }
             },
         ]

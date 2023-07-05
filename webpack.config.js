@@ -24,6 +24,18 @@ module.exports = {
             },
             //js-files loader
             {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                            ['@babel/preset-env', {targets: {node: 'current'}}],
+                        ],
+                    }
+                }
+            },
+            {
                 test: /\.((c|sa|sc)ss)$/i,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
             },
@@ -39,9 +51,9 @@ module.exports = {
         ]
     },
     optimization: {
-        // runtimeChunk: {
-        //     name: (entrypoint) => `runtimechunk~${entrypoint.name}`,
-        // },
+        runtimeChunk: {
+            name: (entrypoint) => `runtimechunk~${entrypoint.name}`,
+        },
         minimizer: [
             '...',
             new ImageMinimizerPlugin({
@@ -79,5 +91,17 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
     ],
+    resolve: {
+        alias: {
+            config$: './configs/app-config.js',
+        },
+        extensions: ['.js', '.jsx'],
+        modules: [
+            'node_modules',
+            'bower_components',
+            'shared',
+            '/shared/vendor/modules',
+        ],
+    },
     target: 'web'
 }

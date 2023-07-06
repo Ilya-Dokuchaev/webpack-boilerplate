@@ -1,10 +1,16 @@
-const webpackConfiguration = require('../webpack.config');
-const TerserPlugin = require('terser-webpack-plugin')
-const CssMinimizer = require("css-minimizer-webpack-plugin")
+// const webpackConfiguration = require('../webpack.config');
+import configMain from "../webpack.config.js";
+// const TerserPlugin = require('terser-webpack-plugin')
+import TerserPlugin from "terser-webpack-plugin";
+// const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+// const {merge} = require('webpack-merge')
+import {merge} from "webpack-merge";
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-const {merge} = require('webpack-merge')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-module.exports = merge(webpackConfiguration, {
+
+const configProd = merge(configMain, {
     mode: 'production',
     devtool: false,
     output: {
@@ -16,7 +22,7 @@ module.exports = merge(webpackConfiguration, {
         minimizer: [new TerserPlugin({
             parallel: true
         }),
-            new CssMinimizer({})],
+            new CssMinimizerPlugin({})],
 
     },
     module: {
@@ -41,3 +47,4 @@ module.exports = merge(webpackConfiguration, {
         }),
     ]
 })
+export default configProd

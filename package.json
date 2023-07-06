@@ -7,6 +7,7 @@
     "> 5%",
     "last 2 versions"
   ],
+  "type": "module",
   "scripts": {
     "build": "webpack --config configuration/webpack.dev.config.js && npm run test",
     "prebuild-prod": "npm run lint:scss:fix && npm run lint:js:fix && npm run test",

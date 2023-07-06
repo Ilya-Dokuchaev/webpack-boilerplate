@@ -1,10 +1,13 @@
-const enviroment = require("./enviroment");
+// const enviroment = require("./enviroment");
+import configEnv from "./enviroment.js";
+// const webpackConfiguration = require('../webpack.config');
+import configMain from '../webpack.config.js'
+// const {merge} = require('webpack-merge')
+import {merge} from "webpack-merge"
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-const webpackConfiguration = require('../webpack.config');
-
-const {merge} = require('webpack-merge')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-module.exports = merge(webpackConfiguration, {
+const configDev = merge(configMain, {
     mode: 'development',
     output: {
         filename: "js/[name].bundle.js",
@@ -13,11 +16,11 @@ module.exports = merge(webpackConfiguration, {
     devtool: 'eval',
     devServer: {
         static: {
-            directory: enviroment.paths.output,
+            directory: configEnv.paths.output,
             publicPath: '/',
             watch: false,
         },
-        ...enviroment.server,
+        ...configEnv.server,
         hot: true,
         client: {
             overlay: true,
@@ -48,3 +51,4 @@ module.exports = merge(webpackConfiguration, {
         filename: 'css/[name].css',
     }),]
 })
+export default configDev

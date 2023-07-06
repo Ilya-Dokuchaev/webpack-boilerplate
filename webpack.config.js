@@ -1,19 +1,27 @@
-const path = require('path')
+// const path = require('path')
+import path from "path";
 
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
+import HtmlWebpackPlugin from "html-webpack-plugin";
+// const CopyPlugin = require("copy-webpack-plugin");
+import CopyPlugin from "copy-webpack-plugin";
 
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyPlugin = require("copy-webpack-plugin");
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+import ImageMinimizerPlugin from "image-minimizer-webpack-plugin";
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-const enviroment = require('./configuration/enviroment.js')
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-module.exports = {
+// const enviroment = require('./configuration/enviroment.js')
+import configEnv from "./configuration/enviroment.js";
+// const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+import {CleanWebpackPlugin} from "clean-webpack-plugin";
+
+const configMain = {
     entry: {
-        app: path.resolve(enviroment.paths.source, 'js', 'app.js')
+        app: path.resolve(configEnv.paths.source, 'js', 'app.js')
     },
     output: {
-        path: enviroment.paths.output,
+        path: configEnv.paths.output,
         clean: true,
     },
     module: {
@@ -44,7 +52,7 @@ module.exports = {
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
-                        maxSize: enviroment.limits.images,
+                        maxSize: configEnv.limits.images,
                     },
                 },
             },
@@ -83,8 +91,8 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: path.resolve(enviroment.paths.source, 'img', 'content'),
-                    to: path.resolve(enviroment.paths.output, 'img', 'content'),
+                    from: path.resolve(configEnv.paths.source, 'img', 'content'),
+                    to: path.resolve(configEnv.paths.output, 'img', 'content'),
                     toType: 'dir',
                 },
             ]
@@ -105,3 +113,4 @@ module.exports = {
     },
     target: 'web'
 }
+export default configMain

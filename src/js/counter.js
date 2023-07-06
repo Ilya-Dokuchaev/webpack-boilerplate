@@ -16,4 +16,4 @@ class Counter {
     }
 }
 
-module.exports = Counter;
+export {Counter}

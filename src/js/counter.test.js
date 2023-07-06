@@ -1,4 +1,4 @@
-const CounterTest = require("./counter.js");
+import {Counter as CounterTest} from "./counter.js";
 
 describe('Counter method as :', function () {
     let counter = new CounterTest(0);

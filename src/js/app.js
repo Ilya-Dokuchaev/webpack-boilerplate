@@ -10,3 +10,4 @@ counter.increment();
 
 // eslint-disable-next-line
 console.log(counter.getCounter());
+export {counter}

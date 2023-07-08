@@ -1,19 +1,50 @@
-const path = require('path')
+/*
+ * MIT License
+ *
+ * Copyright (c) [year] [fullname]
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 
+// const path = require('path')
+import path from "path";
 
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyPlugin = require("copy-webpack-plugin");
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
+import HtmlWebpackPlugin from "html-webpack-plugin";
+// const CopyPlugin = require("copy-webpack-plugin");
+import CopyPlugin from "copy-webpack-plugin";
 
-const enviroment = require('./configuration/enviroment.js')
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-module.exports = {
+// const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+import ImageMinimizerPlugin from "image-minimizer-webpack-plugin";
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+
+// const enviroment = require('./configuration/enviroment.js')
+import configEnv from "./configuration/enviroment.js";
+// const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+
+const configMain = {
     entry: {
-        app: path.resolve(enviroment.paths.source, 'js', 'app.js')
+        app: path.resolve(configEnv.paths.source, 'js', 'app.js')
     },
     output: {
-        path: enviroment.paths.output,
+        path: configEnv.paths.output,
         clean: true,
     },
     module: {
@@ -44,7 +75,7 @@ module.exports = {
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
-                        maxSize: enviroment.limits.images,
+                        maxSize: configEnv.limits.images,
                     },
                 },
             },
@@ -83,13 +114,12 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: path.resolve(enviroment.paths.source, 'img', 'content'),
-                    to: path.resolve(enviroment.paths.output, 'img', 'content'),
+                    from: path.resolve(configEnv.paths.source, 'img', 'content'),
+                    to: path.resolve(configEnv.paths.output, 'img', 'content'),
                     toType: 'dir',
                 },
             ]
         }),
-        new CleanWebpackPlugin(),
     ],
     resolve: {
         alias: {
@@ -105,3 +135,4 @@ module.exports = {
     },
     target: 'web'
 }
+export default configMain

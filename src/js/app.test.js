@@ -22,22 +22,12 @@
  * SOFTWARE.
  */
 
-class Counter {
-    constructor(n) {
-        this.counter = n;
-    }
+import {jest} from '@jest/globals';
+import counter from "./app.js";
 
-    getCounter() {
-        return this.counter;
-    }
+jest.mock('./app.js');
 
-    increment() {
-        this.counter++;
-    }
-
-    decrement() {
-        this.counter--;
-    }
-}
-
-export default Counter;
+test('should be not falsy,', () => {
+    expect(counter).not.toBeNull();
+    expect(counter).not.toBeFalsy();
+});

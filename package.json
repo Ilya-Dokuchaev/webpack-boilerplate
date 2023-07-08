@@ -7,6 +7,7 @@
     "> 5%",
     "last 2 versions"
   ],
+  "type": "module",
   "scripts": {
     "build": "webpack --config configuration/webpack.dev.config.js && npm run test",
     "prebuild-prod": "npm run lint:scss:fix && npm run lint:js:fix && npm run test",
@@ -17,7 +18,7 @@
     "lint:scss:fix": "stylelint \"**/*.scss\" --fix ",
     "lint:js": "eslint --ext .js src/js/",
     "lint:js:fix": "eslint --ext .js src/js/ --fix",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --collectCoverageFrom=\"./src/js/**\""
   },
   "keywords": [
     "webpack",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@babel/core": "^7.22.6",
     "@babel/preset-env": "^7.22.6",
+    "@jest/globals": "^29.6.1",
     "@squoosh/lib": "^0.5.3",
     "autoprefixer": "^10.4.14",
     "babel-jest": "^29.6.0",

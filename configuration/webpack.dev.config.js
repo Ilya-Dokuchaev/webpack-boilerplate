@@ -22,7 +22,7 @@ const configDev = merge(configMain, {
         static: {
             directory: configEnv.paths.output,
             publicPath: '/',
-            watch: false,
+            watch: true,
         },
         ...configEnv.server,
         hot: true,

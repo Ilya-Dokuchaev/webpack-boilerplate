@@ -2,7 +2,7 @@
  * Copyright (c) 2023. MIT license
  */
 
-const path = require('path')
+import path from "path";
 
 // const HtmlWebpackPlugin = require('html-webpack-plugin')
 import HtmlWebpackPlugin from "html-webpack-plugin";

@@ -2,7 +2,12 @@
  * Copyright (c) 2023. MIT license
  */
 
+/**
+ * @jest-environment jsdom
+ */
+
 import {jest} from '@jest/globals';
+
 import counter from "./app.js";
 
 jest.mock('./app.js');

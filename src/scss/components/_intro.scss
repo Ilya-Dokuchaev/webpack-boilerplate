@@ -1,0 +1,27 @@
+/*!
+ * Copyright (c) 2023. MIT license
+ */
+
+.intro__title {
+  text-transform: uppercase;
+  margin: 12rem 0 6.4rem;
+}
+
+.intro__text-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2.4rem;
+  padding: 3.2rem 0;
+}
+
+.intro__text {
+  & a {
+    color: #0074D9;
+  }
+}
+
+.intro__img {
+  max-width: 25rem;
+  margin: 0 auto;
+}

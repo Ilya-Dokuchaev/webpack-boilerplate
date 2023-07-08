@@ -27,6 +27,10 @@
     @media (width <= 1279px) {
       @content;
     }
+  } @else if $point == xsmall {
+    @media (width <= 720px) {
+      @content;
+    }
   }
 }
 

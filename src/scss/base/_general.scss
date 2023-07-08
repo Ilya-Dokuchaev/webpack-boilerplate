@@ -1,0 +1,18 @@
+/*!
+ * Copyright (c) 2023. MIT license
+ */
+
+.container {
+  width: 100%;
+  max-width: 128rem;
+  margin: 0 auto;
+}
+
+.container--text {
+  width: 100%;
+  max-width: 60rem;
+}
+
+.text--right {
+  margin-left: auto;
+}

@@ -1,3 +1,7 @@
+/*!
+ * Copyright (c) 2023. MIT license
+ */
+
 /* Core variables */
 @use 'base/vars';
 
@@ -15,10 +19,13 @@
 
 /* Vendor */
 
+/* General Styles */
+@use "base/general";
+
 /* Components */
+@use "components/header";
+
+@use "components/intro";
 
 /* Browser specific styles */
 @use 'dirty/hacks';
-
-/* Demo Page styles */
-@use 'demo';

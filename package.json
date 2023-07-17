@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/Ilya-Dokuchaev/webpack-boilerplate#readme",
   "devDependencies": {
-    "@babel/core": "^7.22.8",
+    "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
     "@jest/globals": "^29.6.1",
     "@squoosh/lib": "^0.5.3",
